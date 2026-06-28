@@ -13,8 +13,8 @@ authors = [{ name = "Joseph Severino", email = "github@jseverino.com" }]
 keywords = ["mcp", "obsidian", "education", "vault", "local-first"]
 dependencies = [
     "mcp>=1.27",
-    # the shared engine — schema profiles, index, search, task ledger, register_core
-    "vault-engine",
+    # the shared engine (PyPI), import package `vault_engine`
+    "severino-vault-engine>=0.1.0",
 ]
 
 [project.optional-dependencies]
@@ -29,11 +29,6 @@ severino-edu-mcp = "severino_edu_mcp.server:run"
 [project.urls]
 Homepage = "https://github.com/joeseverino/severino-edu-mcp"
 Issues = "https://github.com/joeseverino/severino-edu-mcp/issues"
-
-[tool.uv.sources]
-# vault-engine resolves from its public repo (auth-free), so a fresh uv tool
-# install pulls the engine automatically. Swap to a PyPI version once published.
-vault-engine = { git = "https://github.com/joeseverino/vault-engine" }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/severino_edu_mcp"]
