@@ -32,9 +32,9 @@ Homepage = "https://github.com/joeseverino/severino-edu-mcp"
 Issues = "https://github.com/joeseverino/severino-edu-mcp/issues"
 
 [tool.uv.sources]
-# severino-vault-engine is the sibling repo in Assets/. Path source for this
-# personal install; outside consumers get it from PyPI by version.
-severino-vault-engine = { path = "../vault-engine" }
+# severino-vault-engine resolves from its public repo (auth-free), so this works
+# in CI and on any machine. uv.lock pins the commit. Also on PyPI for consumers.
+severino-vault-engine = { git = "https://github.com/joeseverino/vault-engine" }
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/severino_edu_mcp"]
