@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "severino-edu-mcp"
+description = "MCP server for a Georgia Tech / education Obsidian vault — courses, course notes, and assignments. The education-profile consumer of vault-engine."
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Joseph Severino", email = "github@jseverino.com" }]
+keywords = ["mcp", "obsidian", "education", "vault", "local-first"]
+dependencies = [
+    "mcp>=1.27",
+    # the shared engine — schema profiles, index, search, task ledger, register_core
+    "vault-engine",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+severino-edu-mcp = "severino_edu_mcp.server:run"
+
+[project.urls]
+Homepage = "https://github.com/joeseverino/severino-edu-mcp"
+Issues = "https://github.com/joeseverino/severino-edu-mcp/issues"
+
+[tool.uv.sources]
+# vault-engine sibling repo in Assets/. Non-editable; -> git/PyPI on release.
+vault-engine = { path = "../vault-engine" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/severino_edu_mcp"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+pythonpath = ["src"]
