@@ -13,8 +13,9 @@ authors = [{ name = "Joseph Severino", email = "github@jseverino.com" }]
 keywords = ["mcp", "obsidian", "education", "vault", "local-first"]
 dependencies = [
     "mcp>=1.27",
-    # the shared engine, import package `vault_engine`. Path source below for this
-    # personal install; on PyPI as severino-vault-engine for outside consumers.
+    # the shared engine, import package `vault_engine`. Git source below (uv.lock
+    # pins the commit — bump with `tools bump-engine`, which keeps this repo and
+    # severino-vault-mcp on the same pin); on PyPI for outside consumers.
     "severino-vault-engine>=0.1.1",
 ]
 
