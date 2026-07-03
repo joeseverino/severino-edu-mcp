@@ -1,0 +1,19 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # The whole CI surface is cordon's reusable gate: it runs the checks engine
+  # over this repo, auto-detecting the uv stack (ruff, pytest, version
+  # alignment, built-wheel import smoke) and folding in cordon's repo
+  # invariants — one verdict, all plumbing owned by cordon. Locally the same
+  # gate is scripts/check.sh. The single required check: `cordon / gate`.
+  cordon:
+    uses: joeseverino/cordon/.github/workflows/cordon-gate.yml@main
