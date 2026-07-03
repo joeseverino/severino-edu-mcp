@@ -11,6 +11,12 @@ requires-python = ">=3.11"
 license = "MIT"
 authors = [{ name = "Joseph Severino", email = "github@jseverino.com" }]
 keywords = ["mcp", "obsidian", "education", "vault", "local-first"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
 dependencies = [
     "mcp>=1.27",
     # the shared engine, import package `vault_engine`. Git source below (uv.lock
