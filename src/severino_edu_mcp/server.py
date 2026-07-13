@@ -6,8 +6,9 @@ does, but against an Education :class:`ServerContext` carrying ``EDUCATION_PROFI
 and no Labs-domain tool groups. It is launched with its own config
 (``SVMC_CONFIG=education.toml``) pointing at the Georgia Tech / education vault.
 
-Course-specific tool groups (a course board, scaffolding) layer on later via the
-same ``register(mcp, ctx)`` seam the Labs groups use.
+Education-specific tool groups layer on via the same ``register(mcp, ctx)``
+seam the Labs groups use; the first is :mod:`education` (the publishable
+dataset behind the site's /education/ pages and the resume coursework line).
 """
 
 from __future__ import annotations
@@ -17,6 +18,8 @@ from vault_engine.config import Config
 from vault_engine.context import ServerContext
 from vault_engine.core_tools import register_core
 from vault_engine.schema import EDUCATION_PROFILE
+
+from . import education
 
 _CTX = ServerContext(Config.from_env(), profile=EDUCATION_PROFILE)
 
@@ -44,6 +47,11 @@ OPERATING RULES:
 
 4. Daily progress questions use `daily_progress`.
 
+5. `education_dataset` is the vault's publishable projection — institutions and
+   their courses with `## Site` bullets, the same JSON `severino-edu-mcp export`
+   emits for jseverino.com and resume-engine. Use it for "what's public / what
+   will the site show" questions instead of re-deriving from individual docs.
+
 The configured vault root and indexed directories come from the server's config
 (SVMC_CONFIG / SVMC_* overrides) — point it at the education vault.
 """
@@ -52,10 +60,7 @@ mcp = FastMCP("severino-edu-mcp", instructions=_SERVER_INSTRUCTIONS)
 
 
 register_core(mcp, _CTX)
-
-# Education-specific tool groups (course board, scaffolding) register here later,
-# via the same register(mcp, _CTX) seam the Labs groups use. None yet — the core
-# already makes the vault searchable, readable, and task-tracked.
+education.register(mcp, _CTX)
 
 
 # ----- entry point ------------------------------------------------------------

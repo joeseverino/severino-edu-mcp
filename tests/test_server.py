@@ -35,6 +35,10 @@ def test_edu_server_omits_every_labs_tool() -> None:
         assert labs_tool not in names
 
 
+def test_edu_server_registers_the_education_dataset_tool() -> None:
+    assert "education_dataset" in _tool_names()
+
+
 def test_edu_server_carries_the_education_profile() -> None:
     from severino_edu_mcp import server as edu_server
 

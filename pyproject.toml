@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "severino-edu-mcp"
 description = "MCP server for a Georgia Tech / education Obsidian vault — courses, course notes, and assignments. The education-profile consumer of vault-engine."
-version = "0.1.0"
+version = "0.2.0"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -32,7 +32,7 @@ dev = [
 ]
 
 [project.scripts]
-severino-edu-mcp = "severino_edu_mcp.server:run"
+severino-edu-mcp = "severino_edu_mcp.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/joeseverino/severino-edu-mcp"
