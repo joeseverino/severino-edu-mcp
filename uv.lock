@@ -741,7 +741,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "mcp", specifier = ">=1.27" },
+    { name = "mcp", specifier = ">=1.27,<2" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "severino-vault-engine", git = "https://github.com/joeseverino/vault-engine" },
@@ -751,7 +751,7 @@ provides-extras = ["dev"]
 [[package]]
 name = "severino-vault-engine"
 version = "0.3.0"
-source = { git = "https://github.com/joeseverino/vault-engine#fba722b2b793a952ba9f444bdaf63db6e0eb0edc" }
+source = { git = "https://github.com/joeseverino/vault-engine#caae65854ddb7c99bd0741cf22a7ea41e521d6aa" }
 dependencies = [
     { name = "mcp" },
     { name = "starlette" },
