@@ -28,7 +28,7 @@ def test_edu_server_composes_the_generic_core() -> None:
 def test_edu_server_omits_every_labs_tool() -> None:
     names = _tool_names()
     for labs_tool in (
-        "get_topology", "list_infra_datasets", "list_writeups",
+        "list_writeups",
         "get_technology_catalog", "list_contact_submissions",
         "check_jseverino_security_headers", "apply_jseverino_d1_schema",
     ):

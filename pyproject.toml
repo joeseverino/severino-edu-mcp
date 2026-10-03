@@ -18,7 +18,9 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-    "mcp>=1.27",
+    # mcp 2 renames FastMCP to MCPServer; moving needs the engine and every
+    # consumer to migrate together.
+    "mcp>=1.27,<2",
     # the shared engine, import package `vault_engine`. Git source below (uv.lock
     # pins the commit — bump with `tools bump-engine`, which keeps this repo and
     # severino-vault-mcp on the same pin); on PyPI for outside consumers.
